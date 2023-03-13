@@ -33,20 +33,12 @@ import { ModalLoginComponent } from './modal-login/modal-login.component';
     ReactiveFormsModule,
 
     MatCardModule,
-    MatToolbarModule,
-    MatGridListModule,
-    DragDropModule,
     MatInputModule,
-    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
 
-
     RouterModule.forChild(AuthRouting)
-  ],
-  providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
   ]
 })
 export class AuthModule { }
