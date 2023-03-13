@@ -12,7 +12,7 @@ export class ModalSignComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ModalSignComponent>) { }
 
   signForm = new FormGroup({
-    inputName: new FormControl('', [Validators.maxLength(1)])
+    inputName: new FormControl('',)
   });
 
   get inputName() {

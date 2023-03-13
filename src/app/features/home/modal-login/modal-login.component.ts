@@ -13,8 +13,8 @@ export class ModalLoginComponent implements OnInit {
   constructor() { }
 
   loginForm = new FormGroup({
-    inputEmail: new FormControl('', [Validators.maxLength(1)]),
-    inputPassword: new FormControl('', [Validators.maxLength(1)])
+    inputEmail: new FormControl(''),
+    inputPassword: new FormControl('')
   });
 
   get inputEmail() {

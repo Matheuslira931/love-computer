@@ -2,7 +2,7 @@ import {  Routes } from '@angular/router';
 
 export const AppRoutingModule: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./features/auth/auth.component').then(m => m.AuthComponent)
+    path: 'home',
+    loadChildren: () => import('./features/home/home.component').then(m => m.HomeComponent)
   },
 ];

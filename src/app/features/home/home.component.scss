@@ -1,0 +1,51 @@
+.background-screen {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 30px;
+  .card-style {
+    width: 650px;
+    max-width: 100%;
+    padding: 2em;
+    border-radius: 16px;
+    background: #e6e6e6;
+    box-shadow:  20px 20px 60px #c4c4c4,
+                 -20px -20px 60px #ffffff;
+    .position-style {
+      text-align: center;
+      .style-gif {
+        width: 80px;
+        height: 100%;
+        border-radius: 100%;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -ms-border-radius: 100%;
+        -o-border-radius: 100%;
+      }
+      .sytle-welcome {
+        font-size: 2.2rem;
+        font-weight: 400;
+        line-height: 1em;
+        .love-computer {
+          font-weight: 600;
+          color: #F64740
+        }
+      }
+    }
+    .position-btn {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .btnDefault {
+        width: 150px;
+        margin: 0 15px;
+      }
+    }
+  }
+}
+
+
