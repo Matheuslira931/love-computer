@@ -19,13 +19,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('login', [App\Http\Controllers\AuthController::class,'login']);
 Route::middleware(['jwt.auth'])->group(function () {
+    // Usuário
     Route::get('consultar-usuarios', [App\Http\Controllers\UserController::class,'consultarUsuarios']);
     Route::get('consultar-usuario/{userId}', [App\Http\Controllers\UserController::class,'consultarUsuario']);
-    Route::post('criar-usuario', [App\Http\Controllers\UserController::class,'criarUsuario']);
     Route::put('atualizar-usuario/{userId}', [App\Http\Controllers\UserController::class,'atualizarUsuario']);
     Route::delete('deletar-usuario/{userId}', [App\Http\Controllers\UserController::class,'deletarUsuario']);
     Route::post('logout', [App\Http\Controllers\AuthController::class,'logout']);
+
+    // Anúncio
+
 });
-
-
-
+Route::post('criar-usuario', [App\Http\Controllers\UserController::class,'criarUsuario']);
