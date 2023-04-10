@@ -28,4 +28,8 @@ export class ModalLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logar() {
+
+  }
+
 }

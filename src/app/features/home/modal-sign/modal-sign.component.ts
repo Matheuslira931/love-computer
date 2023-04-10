@@ -9,14 +9,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ModalSignComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ModalSignComponent>) { }
+
+  hide = true;
+
+  constructor() { }
 
   signForm = new FormGroup({
-    inputName: new FormControl('',)
+    inputEmail: new FormControl(''),
+    inputPassword: new FormControl('')
   });
 
-  get inputName() {
-    return this.signForm.get('inputName');
+  get inputEmail() {
+    return this.signForm.get('inputEmail');
+  }
+
+  get inputPassword() {
+    return this.signForm.get('inputPassword');
   }
 
   ngOnInit(): void {

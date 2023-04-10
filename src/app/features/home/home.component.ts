@@ -16,10 +16,7 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalLoginComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      panelClass: 'loginDailog'
     });
   }
 
@@ -27,10 +24,7 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalSignComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      panelClass: 'signDailog'
     });
   }
 
