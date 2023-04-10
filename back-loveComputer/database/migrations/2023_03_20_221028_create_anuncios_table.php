@@ -24,7 +24,7 @@ class CreateAnunciosTable extends Migration
             $table->string('estado_componente');
             $table->decimal('preco', 12, 2); 
             $table->string('forma_pagamento');
-            $table->string('data_criacao');
+            $table->string('data_criacao'); 
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->string('descricao')->nullable();
