@@ -81,21 +81,9 @@ class UserController extends Controller
         if($user){
 
             $rules = [
-                'nome' => [
-                    'required'
-                ],
-                'sobrenome' => [
-                    'required',
-                ],
                 'email' => [
                     'required',
                     'unique:users,email'
-                ],
-                'sexo' => [
-                    'required',
-                ],
-                'data_nascimento' => [
-                    'required',
                 ],
                 'telefone' => [
                     'required',
@@ -116,11 +104,6 @@ class UserController extends Controller
             }
 
             $user->update([
-                'nome' => $request->nome,
-                'sobrenome' => $request->sobrenome,
-                'email' => $request->email,
-                'sexo' => $request->sexo,
-                'data_nascimento' => $request->data_nascimento,
                 'telefone' => $request->telefone,
                 'cidade' => $request->cidade,
                 'estado' => $request->estado,

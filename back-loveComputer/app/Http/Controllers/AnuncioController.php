@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AnuncioController extends Controller
 {
@@ -81,6 +83,27 @@ class AnuncioController extends Controller
             'cidade' => $request->cidade,
             'estado' => $request->estado,
         ]);
+
+
+       // return $request->imagens;
+
+        foreach ( $request->imagens as $imagem_enviada){
+
+            //Image::configure(['driver' => 'imagick']);
+            
+            $imagem = Image::make($imagem_enviada['caminho']);
+            //$imagem = $imagem_enviada;
+
+            Response::make($imagem->encode('jpeg'));
+
+            return $anuncio->id;
+            
+            $imagem_anuncio = Anuncio::Create([
+                'anuncio_id' => $anuncio->id,
+                'imagem' => $imagem,
+            ]);
+
+        }
 
         return $anuncio;
 
