@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
+use App\Models\ImagemAnuncio;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class AnuncioController extends Controller
@@ -16,7 +18,20 @@ class AnuncioController extends Controller
         $anuncio = Anuncio::find($anuncioId);
 
         if($anuncio){
+
+          //  $imagens_bd = mb_convert_encodinge( DB::table('imagem_anuncios')
+        //                    ->where('anuncio_id', '=', $anuncio->id)
+         //                    ->get() );
+
+          //  return $imagens_bd;
+
+           // $ovo = [
+           //     'anuncio' => $anuncio,
+           //     'imagens' => $imagens_bd
+            //];
+
             return $anuncio;
+
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
         }
@@ -84,21 +99,13 @@ class AnuncioController extends Controller
             'estado' => $request->estado,
         ]);
 
-
-       // return $request->imagens;
-
         foreach ( $request->imagens as $imagem_enviada){
-
-            //Image::configure(['driver' => 'imagick']);
             
             $imagem = Image::make($imagem_enviada['caminho']);
-            //$imagem = $imagem_enviada;
 
             Response::make($imagem->encode('jpeg'));
 
-            return $anuncio->id;
-            
-            $imagem_anuncio = Anuncio::Create([
+            $imagem_anuncio = ImagemAnuncio::Create([
                 'anuncio_id' => $anuncio->id,
                 'imagem' => $imagem,
             ]);

@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class imagem_anuncio extends Model
+class ImagemAnuncio extends Model
 {
-    public $timestamps = false;
     //use HasFactory;
     protected $fillable = [
         'anuncio_id',

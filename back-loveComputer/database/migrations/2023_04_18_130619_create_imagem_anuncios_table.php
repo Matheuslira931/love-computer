@@ -18,7 +18,7 @@ class CreateImagemAnunciosTable extends Migration
             $table->unsignedBigInteger('anuncio_id');
             $table->foreign('anuncio_id')->references('id')->on('anuncios');
             $table->binary('imagem');
-            //$table->timestamps();
+            $table->timestamps();
         });
     }
 
