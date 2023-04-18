@@ -19,18 +19,17 @@ class AnuncioController extends Controller
 
         if($anuncio){
 
-          //  $imagens_bd = mb_convert_encodinge( DB::table('imagem_anuncios')
-        //                    ->where('anuncio_id', '=', $anuncio->id)
-         //                    ->get() );
+          $imagens_bd =  DB::table('imagem_anuncios')
+                              ->select('imagem')
+                              ->where('anuncio_id', '=', $anuncio->id)
+                              ->get();
 
-          //  return $imagens_bd;
+           $ovo = [
+               'anuncio' => $anuncio,
+               'imagens' => $imagens_bd
+          ];
 
-           // $ovo = [
-           //     'anuncio' => $anuncio,
-           //     'imagens' => $imagens_bd
-            //];
-
-            return $anuncio;
+           return $ovo;
 
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
@@ -103,11 +102,11 @@ class AnuncioController extends Controller
             
             $imagem = Image::make($imagem_enviada['caminho']);
 
-            Response::make($imagem->encode('jpeg'));
+            $imagem_convertida = base64_encode(Response::make($imagem->encode('jpeg')));
 
             $imagem_anuncio = ImagemAnuncio::Create([
                 'anuncio_id' => $anuncio->id,
-                'imagem' => $imagem,
+                'imagem' => $imagem_convertida,
             ]);
 
         }
