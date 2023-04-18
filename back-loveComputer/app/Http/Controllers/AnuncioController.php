@@ -24,12 +24,12 @@ class AnuncioController extends Controller
                               ->where('anuncio_id', '=', $anuncio->id)
                               ->get();
 
-           $ovo = [
+           $resposta = [
                'anuncio' => $anuncio,
                'imagens' => $imagens_bd
-          ];
+            ];
 
-           return $ovo;
+           return $resposta;
 
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
@@ -112,7 +112,6 @@ class AnuncioController extends Controller
         }
 
         return $anuncio;
-
 
     }
 
