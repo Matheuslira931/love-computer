@@ -10,6 +10,7 @@ import { ModalSignComponent } from './modal-sign/modal-sign.component';
 })
 export class HomeComponent implements OnInit {
 
+
   constructor(public dialog: MatDialog) {}
 
   openLogin(enterAnimationDuration: string, exitAnimationDuration: string) {
