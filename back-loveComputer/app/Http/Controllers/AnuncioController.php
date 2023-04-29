@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
 
+use function PHPUnit\Framework\isNull;
+
 class AnuncioController extends Controller
 {
 
@@ -81,6 +83,11 @@ class AnuncioController extends Controller
             return response()->json(['errors' => $validated->errors()], 422);
         }
 
+        $envia_todo_brasil = false;
+        if($request->has('envia_todo_brasil')){
+            $envia_todo_brasil = $request->envia_todo_brasil;
+        }
+
         $anuncio = Anuncio::Create([
             'nome' => $request->nome,
             'tipo_anuncio' => $request->tipo_anuncio,
@@ -93,7 +100,7 @@ class AnuncioController extends Controller
             'data_criacao' => $request->data_criacao,
             'usuario_id' => $request->usuario_id,
             'descricao' => $request->descricao,
-            'envia_todo_brasil' => $request->envia_todo_brasil,
+            'envia_todo_brasil' => $envia_todo_brasil,
             'cidade' => $request->cidade,
             'estado' => $request->estado,
         ]);
