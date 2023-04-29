@@ -25,4 +25,9 @@ class Anuncio extends Model
         'cidade',
         'estado',
     ];
+
+    public function images(){
+        return $this->hasMany(ImagemAnuncio::class);
+    }
+
 }

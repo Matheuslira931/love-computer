@@ -98,17 +98,15 @@ class AnuncioController extends Controller
             'estado' => $request->estado,
         ]);
 
-        foreach ( $request->imagens as $imagem_enviada){
-            
-            $imagem = Image::make($imagem_enviada['caminho']);
-
-            $imagem_convertida = base64_encode(Response::make($imagem->encode('jpeg')));
-
-            $imagem_anuncio = ImagemAnuncio::Create([
-                'anuncio_id' => $anuncio->id,
-                'imagem' => $imagem_convertida,
-            ]);
-
+        if($request->has('imagens')){
+            foreach ($request->file('imagens') as $imagem) {
+                $imageName = $anuncio->nome.'-image-'.time().rand(1,1000).'.'.$imagem->extension();
+                $imagem->move(public_path('imagens_produtos'),$imageName);
+                ImagemAnuncio::create([
+                    'anuncio_id'=>$anuncio->id,
+                    'imagem'=>$imageName
+                ]);
+            }
         }
 
         return $anuncio;
