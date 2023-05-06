@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -137,7 +138,18 @@ class UserController extends Controller
         $user = User::find($userId);
 
         if($user){
-            return $user;
+
+            $anuncios =  DB::table('anuncios')
+            ->where('usuario_id', '=', $user->id)
+            ->get();
+
+            $resposta = [
+                'usuario' => $user,
+                'anuncios' => $anuncios
+            ];
+
+            return $resposta;
+
         }else{
             return response()->json(['errors' => 'Usuário não encontrado'], 422);
         }

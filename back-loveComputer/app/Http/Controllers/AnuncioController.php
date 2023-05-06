@@ -15,6 +15,19 @@ use function PHPUnit\Framework\isNull;
 class AnuncioController extends Controller
 {
 
+    public function exibirAnuncios(Request $request){
+
+        $anuncios = Anuncio::get();
+
+        if($anuncios){
+           return $anuncios;
+
+        }else{
+            return response()->json(['errors' => 'Anúncio não encontrado'], 422);
+        }
+
+    }
+
     public function exibirAnuncio(Request $request, $anuncioId){
 
         $anuncio = Anuncio::find($anuncioId);
