@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -11,7 +12,18 @@ class AuthController extends Controller
         $token = auth('api')->attempt(["email" => $request->email, "password" => $request->senha]);
         
         if ($token) {
-            return response()->json(['token' => $token]);
+
+            $usuario =  DB::table('users')
+            ->where('email', '=', $request->email)
+            ->get();
+
+            $resposta = [
+                'token'   => $token,
+                'usuario' => $usuario
+            ];
+
+            return response()->json($resposta);
+            
         }
         else {
             return response()->json(['error' => "Email ou senha inválido!"],403);

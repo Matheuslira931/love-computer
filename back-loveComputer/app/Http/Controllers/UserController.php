@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -81,21 +82,9 @@ class UserController extends Controller
         if($user){
 
             $rules = [
-                'nome' => [
-                    'required'
-                ],
-                'sobrenome' => [
-                    'required',
-                ],
                 'email' => [
                     'required',
                     'unique:users,email'
-                ],
-                'sexo' => [
-                    'required',
-                ],
-                'data_nascimento' => [
-                    'required',
                 ],
                 'telefone' => [
                     'required',
@@ -116,11 +105,6 @@ class UserController extends Controller
             }
 
             $user->update([
-                'nome' => $request->nome,
-                'sobrenome' => $request->sobrenome,
-                'email' => $request->email,
-                'sexo' => $request->sexo,
-                'data_nascimento' => $request->data_nascimento,
                 'telefone' => $request->telefone,
                 'cidade' => $request->cidade,
                 'estado' => $request->estado,
@@ -154,7 +138,18 @@ class UserController extends Controller
         $user = User::find($userId);
 
         if($user){
-            return $user;
+
+            $anuncios =  DB::table('anuncios')
+            ->where('usuario_id', '=', $user->id)
+            ->get();
+
+            $resposta = [
+                'usuario' => $user,
+                'anuncios' => $anuncios
+            ];
+
+            return $resposta;
+
         }else{
             return response()->json(['errors' => 'Usuário não encontrado'], 422);
         }

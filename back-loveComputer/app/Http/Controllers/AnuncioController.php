@@ -3,18 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
+use App\Models\ImagemAnuncio;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\ImageManagerStatic as Image;
+
+use function PHPUnit\Framework\isNull;
 
 class AnuncioController extends Controller
 {
+
+    public function exibirAnuncios(Request $request){
+
+        $anuncios = Anuncio::get();
+
+        if($anuncios){
+           return $anuncios;
+
+        }else{
+            return response()->json(['errors' => 'Anúncio não encontrado'], 422);
+        }
+
+    }
 
     public function exibirAnuncio(Request $request, $anuncioId){
 
         $anuncio = Anuncio::find($anuncioId);
 
         if($anuncio){
-            return $anuncio;
+
+          $imagens_bd =  DB::table('imagem_anuncios')
+                              ->select('imagem')
+                              ->where('anuncio_id', '=', $anuncio->id)
+                              ->get();
+
+           $resposta = [
+               'anuncio' => $anuncio,
+               'imagens' => $imagens_bd
+            ];
+
+           return $resposta;
+
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
         }
@@ -65,6 +96,11 @@ class AnuncioController extends Controller
             return response()->json(['errors' => $validated->errors()], 422);
         }
 
+        $envia_todo_brasil = false;
+        if($request->has('envia_todo_brasil')){
+            $envia_todo_brasil = $request->envia_todo_brasil;
+        }
+
         $anuncio = Anuncio::Create([
             'nome' => $request->nome,
             'tipo_anuncio' => $request->tipo_anuncio,
@@ -77,13 +113,23 @@ class AnuncioController extends Controller
             'data_criacao' => $request->data_criacao,
             'usuario_id' => $request->usuario_id,
             'descricao' => $request->descricao,
-            'envia_todo_brasil' => $request->envia_todo_brasil,
+            'envia_todo_brasil' => $envia_todo_brasil,
             'cidade' => $request->cidade,
             'estado' => $request->estado,
         ]);
 
-        return $anuncio;
+        if($request->has('imagens')){
+            foreach ($request->file('imagens') as $imagem) {
+                $imageName = $anuncio->nome.'-image-'.time().rand(1,1000).'.'.$imagem->extension();
+                $imagem->move(public_path('imagens_produtos'),$imageName);
+                ImagemAnuncio::create([
+                    'anuncio_id'=>$anuncio->id,
+                    'imagem'=>$imageName
+                ]);
+            }
+        }
 
+        return $anuncio;
 
     }
 
