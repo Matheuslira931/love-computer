@@ -228,7 +228,7 @@ class AnuncioController extends Controller
         ->where('nome', 'like', $pesquisa)
         ->get();
 
-        if($anuncios){
+        if(count($anuncios) != 0){
             return $anuncios;
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
