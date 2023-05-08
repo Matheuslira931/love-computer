@@ -219,5 +219,21 @@ class AnuncioController extends Controller
         }
 
     }
+
+    public function pesquisarAnuncio(Request $request){
+
+        $pesquisa = '%' . $request->textoPesquisa . '%';
+
+        $anuncios =  DB::table('anuncios')
+        ->where('nome', 'like', $pesquisa)
+        ->get();
+
+        if($anuncios){
+            return $anuncios;
+        }else{
+            return response()->json(['errors' => 'Anúncio não encontrado'], 422);
+        }
+
+    }
     
 }
