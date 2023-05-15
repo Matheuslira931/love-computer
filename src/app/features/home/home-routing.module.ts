@@ -6,10 +6,6 @@ export const HomeRouting: Routes = [
   {
     path: '',
     component: HomeComponent,
-  },
-  {
-    path: 'ovo',
-    component: HomeComponent,
   }
 ];
 

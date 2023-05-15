@@ -1,0 +1,45 @@
+<div class="position-header">
+  <div class="left-area alination-country">
+    <a href="/" class="align-logos">
+      <img class="logo_navbar_name" src="./assets/img/loving-love.gif" />
+    </a>
+    <div class="input-container">
+      <fa-icon class="icon-search"
+        [icon]="['fas', 'magnifying-glass']">
+      </fa-icon>
+      <form [formGroup]="searchForm">
+        <input
+          class="input-search"
+          formControlName="inputSearch"
+          id="search"
+          autocomplete="off"
+          matInput
+          name="inputSearch"
+          placeholder="o que você ta procurando?"
+          type="text" />
+      </form>
+    </div>
+  </div>
+  <div class="right-area alination-country">
+    <li class="nav-item">
+      <fa-icon class="icon-menu"
+        [icon]="['fas', 'money-bill']">
+      </fa-icon>
+      <a class="nav-link" href="#">Meus anúncio</a>
+    </li>
+    <li class="nav-item">
+      <fa-icon class="icon-menu"
+        [icon]="['fas', 'user']">
+      </fa-icon>
+      <a class="nav-link" href="#">Perfil</a>
+    </li>
+    <li class="nav-item" (click)="exit()">
+      <fa-icon class="icon-menu"
+        [icon]="['fas', 'right-from-bracket']">
+      </fa-icon>
+      <a class="nav-link" href="#">Sair</a>
+    </li>
+  </div>
+</div>
+
+

@@ -1,4 +1,47 @@
-<mat-form-field appearance="outline">
-  <mat-label>Outline form field</mat-label>
-  <input matInput placeholder="Placeholder">
-</mat-form-field>
+<form [formGroup]="signForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" formControlName="inputName" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>sobrenome</mat-label>
+    <input matInput type="text" formControlName="inputLastName" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" formControlName="inputEmail" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>sexo</mat-label>
+    <input matInput type="text" formControlName="inputSex" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>data de nascimento</mat-label>
+    <input matInput type="text" formControlName="inputBirthday" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>telefone</mat-label>
+    <input matInput type="text" formControlName="inputPhone" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>cidade</mat-label>
+    <input matInput type="text" formControlName="inputCity" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>estado</mat-label>
+    <input matInput type="text" formControlName="inputState" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>bairro</mat-label>
+    <input matInput type="text" formControlName="inputNeighbourhood" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input matInput formControlName="inputPassword" [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button (click)="cadastrar()">Cadastrar</button>
+</form>

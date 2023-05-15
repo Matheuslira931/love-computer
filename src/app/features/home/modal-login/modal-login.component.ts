@@ -1,8 +1,8 @@
-import { GlobalService } from './../../../core/services/global.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { GlobalService } from './../../../core/services/global.service';
 
 @Component({
   selector: 'app-modal-login',
@@ -32,13 +32,13 @@ export class ModalLoginComponent implements OnInit{
       email: this.loginForm.get('inputEmail')?.value,
       senha: this.loginForm.get('inputPassword')?.value,
     }
-    console.log('entrou na função', request)
     this.globalService.entityName = 'api/login';
     this.globalService.createResource(request).subscribe({
       next: (response:any) => {
         localStorage.setItem("token", response.token);
         this.dialog.closeAll();
-        this.router.navigateByUrl('/ovo');
+        this.router.navigateByUrl('/anuncios');
+        console.log('chegou aqui?');
       },
       error: (response) => console.log("deu ruim", request),
     }
