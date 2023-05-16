@@ -20,6 +20,12 @@ export class ModalLoginComponent implements OnInit{
     this.buildForm();
   }
 
+  redirect_auth() {
+    this.dialog.closeAll();
+    this.router.navigate(['/auth']);
+  }
+
+
   buildForm() : void {
     this.loginForm = new FormGroup({
       inputEmail: new FormControl('', [Validators.required]),

@@ -53,3 +53,40 @@ body a {
   cursor: pointer;
   text-decoration: none;
 }
+
+.dailog-login {
+  width: 370px;
+}
+
+.dailog-sign {
+  width: 850px;
+}
+
+.btn-modal-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 176px;
+  height: 52px;
+  background: #F64740;
+  color: #fcfcfc;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+  box-shadow: 0 8px 15px rgba(0,0,0,.1);
+  transition: all .3s ease 0s;
+}
+
+.btn-modal-auth:hover {
+  background: #fcfcfc;
+  color: #F64740;
+  cursor: pointer;
+  box-shadow: 0 15px 20px rgba(246, 71, 64,.4);
+  transform: translateY(-4px);
+}

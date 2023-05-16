@@ -21,6 +21,11 @@ export class ModalSignComponent implements OnInit {
     this.buildForm();
   }
 
+  redirect_auth() {
+    this.dialog.closeAll();
+    this.router.navigate(['/auth']);
+  }
+
   buildForm() : void {
     this.signForm = new FormGroup({
       inputName: new FormControl('', [Validators.required]),

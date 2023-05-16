@@ -35,8 +35,8 @@
         <a class="nav-link" href="#">Perfil</a>
       </div>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item><fa-icon class="icon-menu" [icon]="['fas', 'user-pen']"></fa-icon>Editar</button>
-        <button mat-menu-item (click)="exit()"><fa-icon class="icon-menu" [icon]="['fas', 'right-from-bracket']"></fa-icon>Sair</button>
+        <button mat-menu-item class="dropdown-menu"><fa-icon class="icon-dropdown-menu" [icon]="['fas', 'user-pen']"></fa-icon>Editar</button>
+        <button mat-menu-item class="dropdown-menu" (click)="exit()"><fa-icon class="icon-dropdown-menu" [icon]="['fas', 'right-from-bracket']"></fa-icon>Sair</button>
       </mat-menu>
     </li>
   </div>

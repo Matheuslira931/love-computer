@@ -7,11 +7,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { ModalSignComponent } from './modal-sign/modal-sign.component';
-
-
 
 @NgModule({
   declarations: [
@@ -20,6 +18,7 @@ import { ModalSignComponent } from './modal-sign/modal-sign.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,

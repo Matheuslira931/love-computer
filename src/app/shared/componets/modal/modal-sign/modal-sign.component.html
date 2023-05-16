@@ -1,41 +1,42 @@
+<a class="title-sign">Crie sua conta e encontre o produto ideal para você!</a>
 <form [formGroup]="signForm">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-6">
     <mat-label>Nome</mat-label>
     <input matInput type="text" formControlName="inputName" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-6">
     <mat-label>sobrenome</mat-label>
     <input matInput type="text" formControlName="inputLastName" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-12">
     <mat-label>Email</mat-label>
     <input matInput type="text" formControlName="inputEmail" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-3">
     <mat-label>sexo</mat-label>
     <input matInput type="text" formControlName="inputSex" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-3">
     <mat-label>data de nascimento</mat-label>
     <input matInput type="text" formControlName="inputBirthday" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-6">
     <mat-label>telefone</mat-label>
     <input matInput type="text" formControlName="inputPhone" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-4">
     <mat-label>cidade</mat-label>
     <input matInput type="text" formControlName="inputCity" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-4">
     <mat-label>estado</mat-label>
     <input matInput type="text" formControlName="inputState" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-4">
     <mat-label>bairro</mat-label>
     <input matInput type="text" formControlName="inputNeighbourhood" />
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="ui-g-12">
     <mat-label>Senha</mat-label>
     <input matInput formControlName="inputPassword" [type]="hide ? 'password' : 'text'">
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -43,5 +44,7 @@
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
-  <button (click)="cadastrar()">Cadastrar</button>
+  <p class="use-term">Ao cadastrar-se você aceita nossos <a class="detail-term" href="/assets/pdf/termo_condições.pdf" target="_blank">termos de uso</a> e <a class="detail-term" href="/assets/pdf/PoliticaPrivacidade.pdf" target="_blank">política de privacidade</a>.</p>
+  <a class="to-login" (click)="redirect_auth()" >Já tem conta? Faça login</a>
+  <button class="btn-modal-auth" (click)="cadastrar()">Cadastrar</button>
 </form>

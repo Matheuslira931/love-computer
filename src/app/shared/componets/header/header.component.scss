@@ -102,6 +102,10 @@ nav {
 
 }
 
+::ng-deep .icon-dropdown-menu {
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 50.063em) {
   .input-search {
     width: 100% !important;
