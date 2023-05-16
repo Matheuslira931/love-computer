@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
           faQuestion, faCoffee, faBriefcase, faPaste, faHeart,
-          faBell, faUser, faMagnifyingGlass, faSortDown, faMoneyBill, faRightFromBracket
+          faBell, faUser, faMagnifyingGlass, faSortDown, faMoneyBill, faRightFromBracket, faUserPen
         } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedinIn, faInstagram, faTwitter, faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 @NgModule({
@@ -22,7 +22,7 @@ export class IconModule {
     library.addIcons(
       faGoogle, faFacebookF, faLinkedinIn, faInstagram, faTwitter,
       faPaste, faHeart, faQuestion, faCoffee, faBriefcase, faBell,
-      faUser, faMagnifyingGlass,faSortDown, faMoneyBill, faRightFromBracket
+      faUser, faMagnifyingGlass,faSortDown, faMoneyBill, faRightFromBracket, faUserPen
     );
   }
 }

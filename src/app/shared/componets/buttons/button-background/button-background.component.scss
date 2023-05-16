@@ -1,0 +1,63 @@
+.btn-default {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #F64740;
+  width: 130px;
+  height: 40px;
+  font-size: 0.938rem;
+  font-weight: 400;
+  border: none;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  cursor: pointer;
+}
+
+.btn-default:hover {
+  border: 1px solid #a12727;
+}
+
+.backgroundFull {
+  color: #fff;
+  background: #a12727;
+}
+
+.backgroundFull:hover {
+  color: #F64740;
+  background: #fff;
+  border: 1px solid #fff;
+  text-decoration: none;
+}
+
+// .backgroundHalf {
+//   margin: 0 0 0 auto;
+//   color: $sec-color-font;
+//   border: 1px solid;
+// }
+
+// .backgroundHalf:hover {
+//   background: $main-color-btn;
+//   color: $the-color-font;
+//   text-decoration: none;
+// }
+
+.space-btn {
+  margin-right: 15px !important;
+}
+
+.btn-send-submit {
+  margin: auto;
+}
+
+.btn-back {
+  width: 85px;
+}

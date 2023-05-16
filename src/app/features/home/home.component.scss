@@ -11,8 +11,7 @@
     padding: 2em;
     border-radius: 16px;
     background: #e6e6e6;
-    box-shadow:  20px 20px 60px #c4c4c4,
-                 -20px -20px 60px #ffffff;
+    box-shadow:  9px 5px 30px #979595, -20px -20px 14px #ffffff;
     .position-style {
       text-align: center;
       .style-gif {
@@ -47,6 +46,11 @@
       }
     }
   }
+}
+.edit-svg {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
 }
 
 

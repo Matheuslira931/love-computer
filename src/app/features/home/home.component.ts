@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalLoginComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
+      panelClass: "dailog-login"
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalSignComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
+      panelClass: "dailog-sign"
     });
 
     dialogRef.afterClosed().subscribe(result => {

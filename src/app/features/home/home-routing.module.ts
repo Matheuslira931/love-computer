@@ -4,7 +4,7 @@ import { HomeComponent } from './home.component';
 
 export const HomeRouting: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: HomeComponent,
   }
 ];

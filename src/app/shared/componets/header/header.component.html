@@ -1,7 +1,7 @@
 <div class="position-header">
   <div class="left-area alination-country">
     <a href="/" class="align-logos">
-      <img class="logo_navbar_name" src="./assets/img/loving-love.gif" />
+      <img class="logo_navbar_name" src="./assets/img/loving-love.gif" alt="brand header"/>
     </a>
     <div class="input-container">
       <fa-icon class="icon-search"
@@ -20,7 +20,7 @@
       </form>
     </div>
   </div>
-  <div class="right-area alination-country">
+  <div  *ngIf="userLogged" class="logged alination-country">
     <li class="nav-item">
       <fa-icon class="icon-menu"
         [icon]="['fas', 'money-bill']">
@@ -28,17 +28,29 @@
       <a class="nav-link" href="#">Meus anúncio</a>
     </li>
     <li class="nav-item">
-      <fa-icon class="icon-menu"
-        [icon]="['fas', 'user']">
-      </fa-icon>
-      <a class="nav-link" href="#">Perfil</a>
+      <div class="nav-item" [matMenuTriggerFor]="menu">
+        <fa-icon class="icon-menu"
+          [icon]="['fas', 'user']">
+        </fa-icon>
+        <a class="nav-link" href="#">Perfil</a>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item><fa-icon class="icon-menu" [icon]="['fas', 'user-pen']"></fa-icon>Editar</button>
+        <button mat-menu-item (click)="exit()"><fa-icon class="icon-menu" [icon]="['fas', 'right-from-bracket']"></fa-icon>Sair</button>
+      </mat-menu>
     </li>
-    <li class="nav-item" (click)="exit()">
-      <fa-icon class="icon-menu"
-        [icon]="['fas', 'right-from-bracket']">
-      </fa-icon>
-      <a class="nav-link" href="#">Sair</a>
-    </li>
+  </div>
+  <div  *ngIf="!userLogged" class="notLogged alination-country">
+    <app-button-background
+      editStyle="btn-back"
+      content="Logar"
+      (click)="openLogin('500ms', '500ms')">
+    </app-button-background>
+    <app-button-background
+      editStyle="backgroundFull"
+      content="Cadastrar"
+      (click)="openSign('500ms', '500ms')">
+    </app-button-background>
   </div>
 </div>
 
