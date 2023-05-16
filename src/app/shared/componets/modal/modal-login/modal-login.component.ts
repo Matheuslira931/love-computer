@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { GlobalService } from './../../../../core/services/global.service';
+import { GlobalService } from '../../../../core/services/global.service';
 
 @Component({
   selector: 'app-modal-login',

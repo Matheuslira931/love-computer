@@ -3,8 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/core/services/global.service';
-import { ModalLoginComponent } from './modal-login/modal-login.component';
-import { ModalSignComponent } from './modal-sign/modal-sign.component';
+import { ModalLoginComponent } from '../modal/modal-login/modal-login.component';
+import { ModalSignComponent } from '../modal/modal-sign/modal-sign.component';
 
 @Component({
   selector: 'app-header',

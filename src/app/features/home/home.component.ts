@@ -1,7 +1,7 @@
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { ModalLoginComponent } from './modal-login/modal-login.component';
-import { ModalSignComponent } from './modal-sign/modal-sign.component';
+import { ModalLoginComponent } from 'src/app/shared/componets/modal/modal-login/modal-login.component';
+import { ModalSignComponent } from 'src/app/shared/componets/modal/modal-sign/modal-sign.component';
 
 @Component({
   selector: 'app-home',
