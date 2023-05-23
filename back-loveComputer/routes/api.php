@@ -29,7 +29,9 @@ Route::middleware(['jwt.auth'])->group(function () {
     // Anúncio
     Route::post('criar-anuncio', [App\Http\Controllers\AnuncioController::class,'criarAnuncio']);
     Route::put('atualizar-anuncio/{anuncioId}', [App\Http\Controllers\AnuncioController::class,'atualizarAnuncio']);
-    Route::delete('deletar-anuncio/{anuncioId}', [App\Http\Controllers\AnunciocController::class,'deletarAnuncio']);
+    Route::delete('deletar-anuncio/{anuncioId}', [App\Http\Controllers\AnuncioController::class,'deletarAnuncio']);
+    Route::post('adicionar-imagem-anuncio', [App\Http\Controllers\AnuncioController::class,'adicionarImagemAnuncio']);
+    Route::delete('deletar-imagem-anuncio', [App\Http\Controllers\AnuncioController::class,'deletarImagemAnuncio']);
 
 });
 

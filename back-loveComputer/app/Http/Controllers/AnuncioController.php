@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
 use App\Models\ImagemAnuncio;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManagerStatic as Image;
+use PhpParser\Node\Stmt\TryCatch;
 
 use function PHPUnit\Framework\isNull;
 
@@ -216,6 +218,62 @@ class AnuncioController extends Controller
             return $anuncio;
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
+        }
+
+    }
+
+    public function adicionarImagemAnuncio(Request $request){
+
+        $erro = false;
+        $anuncio = Anuncio::find($request->anuncio_id);
+
+        if($anuncio){
+
+            if($request->has('imagens')){
+
+                try {
+                    foreach ($request->file('imagens') as $imagem) {
+                        $imageName = $anuncio->nome.'-image-'.time().rand(1,1000).'.'.$imagem->extension();
+                        $imagem->move(public_path('imagens_produtos'),$imageName);
+                        $imagemCriada = ImagemAnuncio::create([
+                            'anuncio_id'=>$anuncio->id,
+                            'imagem'=>$imageName
+                        ]);
+                    }
+                } catch (\Throwable $th) {
+                    $erro = true;
+                }
+
+            }else{
+                $erro = true;
+            }
+
+        }else{
+            $erro = true;
+        }
+
+        if($erro){
+            return response()->json(['errors' => 'Não foi possível adicionar a Imagem'], 422);
+        }else{
+            return $imagemCriada;
+        }
+
+    }
+
+    public function deletarImagemAnuncio(Request $request){
+
+        $imagemQuery =  DB::table('imagem_anuncios')
+                    ->where('imagem', '=', $request->imagem)
+                    ->get();
+
+        if($imagemQuery){
+            DB::table('imagem_anuncios')->where('imagem', $request->imagem)->delete();
+            $imagem = $imagemQuery->first();
+            $caminho = public_path("\imagens_produtos\\") . $imagem->imagem;
+            File::delete($caminho);
+            return $imagem;
+        }else{
+            return response()->json(['errors' => 'Não foi possível excluir a Imagem'], 422);
         }
 
     }
