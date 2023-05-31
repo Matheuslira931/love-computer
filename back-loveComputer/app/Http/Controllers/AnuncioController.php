@@ -22,7 +22,22 @@ class AnuncioController extends Controller
         $anuncios = Anuncio::get();
 
         if($anuncios){
-           return $anuncios;
+            foreach ($anuncios as $anuncio) {
+
+                $imagem =  DB::table('imagem_anuncios')
+                ->select('imagem')
+                ->where('anuncio_id', '=', $anuncio->id)
+                ->get()
+                ->first();
+
+                $saida[] = [
+                    'anuncio' => $anuncio,
+                    'imagem' => $imagem
+                 ];
+   
+            }
+            
+           return $saida;
 
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
