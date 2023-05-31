@@ -51,6 +51,12 @@ class AnuncioController extends Controller
 
         if($anuncio){
 
+          $usuario =  DB::table('users')
+                      ->select('nome', 'telefone')
+                      ->where('id', '=', $anuncio->usuario_id)
+                      ->get()
+                      ->first();
+
           $imagens_bd =  DB::table('imagem_anuncios')
                               ->select('imagem')
                               ->where('anuncio_id', '=', $anuncio->id)
@@ -58,7 +64,8 @@ class AnuncioController extends Controller
 
            $resposta = [
                'anuncio' => $anuncio,
-               'imagens' => $imagens_bd
+               'imagens' => $imagens_bd,
+               'usuario' => $usuario
             ];
 
            return $resposta;
