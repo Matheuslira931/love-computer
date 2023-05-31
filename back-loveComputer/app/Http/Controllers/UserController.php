@@ -82,14 +82,19 @@ class UserController extends Controller
         if($user){
 
             $rules = [
-                'email' => [
+                'nome' => [
                     'required',
-                    'unique:users,email'
+                ],
+                'sobrenome' => [
+                    'required',
+                ],
+                'sexo' => [
+                    'required',
+                ],
+                'data_nascimento' => [
+                    'required',
                 ],
                 'telefone' => [
-                    'required',
-                ],
-                'senha' => [
                     'required',
                 ]
             ];
@@ -105,11 +110,14 @@ class UserController extends Controller
             }
 
             $user->update([
+                'nome' => $request->nome,
+                'sobrenome' => $request->sobrenome,
+                'sexo' => $request->sexo,
+                'data_nascimento' => $request->data_nascimento,
                 'telefone' => $request->telefone,
                 'cidade' => $request->cidade,
                 'estado' => $request->estado,
                 'bairro' => $request->bairro,
-                'senha' => bcrypt($request->senha),
             ]);
 
             return $user;

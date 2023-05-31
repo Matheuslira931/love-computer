@@ -190,9 +190,6 @@ class AnuncioController extends Controller
                 ],
                 'data_criacao' => [
                     'required',
-                ],
-                'usuario_id' => [
-                    'required',
                 ]
             ];
 
@@ -216,7 +213,6 @@ class AnuncioController extends Controller
                 'preco' => $request->preco,
                 'forma_pagamento' => $request->forma_pagamento,
                 'data_criacao' => $request->data_criacao,
-                'usuario_id' => $request->usuario_id,
                 'descricao' => $request->descricao,
                 'envia_todo_brasil' => $request->envia_todo_brasil,
                 'cidade' => $request->cidade,
@@ -236,6 +232,18 @@ class AnuncioController extends Controller
         $anuncio = Anuncio::find($anuncioId);
 
         if($anuncio){
+
+            $imagens_bd =  DB::table('imagem_anuncios')
+            ->select('imagem')
+            ->where('anuncio_id', '=', $anuncio->id)
+            ->get();
+
+            if($imagens_bd){
+                foreach ($imagens_bd  as $imagem) {
+                    $this->deletarImagemAnuncioPorImagem($imagem->imagem);
+                }
+            }
+
             $anuncio->delete();
             return $anuncio;
         }else{
@@ -288,8 +296,26 @@ class AnuncioController extends Controller
                     ->where('imagem', '=', $request->imagem)
                     ->get();
 
-        if($imagemQuery){
+        if(count($imagemQuery) > 0){
             DB::table('imagem_anuncios')->where('imagem', $request->imagem)->delete();
+            $imagem = $imagemQuery->first();
+            $caminho = public_path("\imagens_produtos\\") . $imagem->imagem;
+            File::delete($caminho);
+            return $imagem;
+        }else{
+            return response()->json(['errors' => 'Não foi possível excluir a Imagem'], 422);
+        }
+
+    }
+
+    public function deletarImagemAnuncioPorImagem($imagem){
+
+        $imagemQuery =  DB::table('imagem_anuncios')
+                    ->where('imagem', '=', $imagem)
+                    ->get();
+
+        if($imagemQuery){
+            DB::table('imagem_anuncios')->where('imagem', $imagem)->delete();
             $imagem = $imagemQuery->first();
             $caminho = public_path("\imagens_produtos\\") . $imagem->imagem;
             File::delete($caminho);
