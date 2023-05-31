@@ -52,7 +52,7 @@ class AnuncioController extends Controller
         if($anuncio){
 
           $usuario =  DB::table('users')
-                      ->select('nome', 'telefone')
+                      ->select('id', 'nome', 'telefone')
                       ->where('id', '=', $anuncio->usuario_id)
                       ->get()
                       ->first();
