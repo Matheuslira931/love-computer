@@ -147,9 +147,28 @@ class UserController extends Controller
 
         if($user){
 
-            $anuncios =  DB::table('anuncios')
+            $anunciosDB =  DB::table('anuncios')
             ->where('usuario_id', '=', $user->id)
             ->get();
+
+            if(count($anunciosDB) > 0){
+                foreach ($anunciosDB as $anuncio) {
+                    
+                    $imagens =  DB::table('imagem_anuncios')
+                    ->select('imagem')
+                    ->where('anuncio_id', '=', $anuncio->id)
+                    ->get();
+
+                    $quantidadeImagem = count($imagens);
+
+                    $anuncios[] = [
+                        'anuncio' => $anuncio,
+                        'quantidadeImagem' => $quantidadeImagem,
+                        'imagens' => $imagens
+                    ];
+
+                }
+            }
 
             $resposta = [
                 'usuario' => $user,

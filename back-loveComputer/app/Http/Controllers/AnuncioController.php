@@ -24,14 +24,18 @@ class AnuncioController extends Controller
         if($anuncios){
             foreach ($anuncios as $anuncio) {
 
-                $imagem =  DB::table('imagem_anuncios')
+                $imagens =  DB::table('imagem_anuncios')
                 ->select('imagem')
                 ->where('anuncio_id', '=', $anuncio->id)
-                ->get()
-                ->first();
+                ->get();
+                
+                $imagem = $imagens->first();
+
+                $quantidadeImagem = count($imagens);
 
                 $saida[] = [
                     'anuncio' => $anuncio,
+                    'quantidadeImagem' => $quantidadeImagem,
                     'imagem' => $imagem
                  ];
    
@@ -62,8 +66,11 @@ class AnuncioController extends Controller
                               ->where('anuncio_id', '=', $anuncio->id)
                               ->get();
 
+          $quantidadeImagem = count($imagens_bd);
+
            $resposta = [
                'anuncio' => $anuncio,
+               'quantidadeImagem' => $quantidadeImagem,
                'imagens' => $imagens_bd,
                'usuario' => $usuario
             ];
