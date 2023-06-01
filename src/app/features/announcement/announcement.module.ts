@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AnnouncementRouting } from './announcement-routing.module';
 import { AnnouncementComponent } from './announcement.component';
 import { HeaderModule } from 'src/app/shared/componets/header/header.module';
+import { IconModule } from 'src/app/shared/componets/icons/icon.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { HeaderModule } from 'src/app/shared/componets/header/header.module';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(AnnouncementRouting),
-    HeaderModule
+    HeaderModule,
+    IconModule
   ]
 })
 export class AnnouncementModule { }
