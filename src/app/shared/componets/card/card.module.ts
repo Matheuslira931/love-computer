@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardAdComponent } from './card-ad/card-ad.component';
+import { IconModule } from '../icons/icon.module';
 
 
 
@@ -9,7 +10,8 @@ import { CardAdComponent } from './card-ad/card-ad.component';
     CardAdComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    IconModule
   ],
   exports: [
     CardAdComponent
