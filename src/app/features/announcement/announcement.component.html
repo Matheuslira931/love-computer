@@ -1,31 +1,16 @@
 <app-header></app-header>
 <div class="container">
-  <div class="card-ad">
-    <div class="background-img">
-      <div class="organization-img">
-        <img class="img-ad" src="../../../assets/img/mouse-gamer.jpg"/>
-      </div>
-    </div>
-    <div class="content-card">
-      <div class="up-side">
-        <p class="title-ad">Mouse gamer</p>
-        <div class="organization-price">
-          <span class="price-ad">R$: <span>248</span></span>
-          <p class="installment">12x de R$ <span>24</span></p>
-        </div>
-      </div>
-      <div class="organization-side">
-        <div class="middle-side">
-          <div class="tag"><fa-icon [icon]="['fas', 'truck-fast']"></fa-icon>Entrega fácil</div>
-          <div class="tag"><fa-icon [icon]="['fas', 'store']"></fa-icon>Pague on-line</div>
-          <div class="tag"><fa-icon [icon]="['fas', 'credit-card']"></fa-icon>Parcelamento</div>
-        </div>
-        <div class="down-side">
-          <p class="location-ad">Fortaleza, Meireles</p>
-          <p class="hora-ad">Hoje, 20:12</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-card-ad
+    imgCard="mouse-gamer.jpg"
+    titleCard="Mouse gamer"
+    priceCard="250"
+    installmentCard="{{installment}}"
+    locationCard="Ceara"
+    regionCard="Fortaleza"
+    dateCard="hoje"
+    tagCard="Entrega"
+    iconName="truck-fast"
+    (click)="enterAd()"
+  ></app-card-ad>
 </div>
 
