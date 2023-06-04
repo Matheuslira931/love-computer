@@ -16,5 +16,5 @@ export class CardAdComponent {
   @Input() dateCard = '';
   @Input() tagCard= '';
   @Input() iconName:any;
-  
+
 }
