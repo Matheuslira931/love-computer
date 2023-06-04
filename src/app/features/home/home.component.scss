@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 70px 30px;
+  z-index: 99;
   padding-bottom: 0;
   .card-style {
     width: 650px;
@@ -11,7 +12,12 @@
     padding: 2em;
     border-radius: 16px;
     background: #e6e6e6;
+<<<<<<< HEAD
     box-shadow:  9px 5px 30px #979595, -20px -20px 14px #ffffff;
+=======
+    box-shadow:  -3px 9px 16px #1616162f,
+                 -20px -20px 60px #0f0f0f36;
+>>>>>>> master
     .position-style {
       text-align: center;
       .style-gif {
@@ -47,6 +53,7 @@
     }
   }
 }
+<<<<<<< HEAD
 .edit-svg {
   position: absolute;
   bottom: 0;
@@ -54,3 +61,10 @@
 }
 
 
+=======
+.background-waves {
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
+}
+>>>>>>> master

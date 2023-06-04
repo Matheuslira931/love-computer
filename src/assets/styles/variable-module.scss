@@ -1,2 +1,14 @@
-@import url('./variable-color.scss');
-@import url('./variable-typography.scss');
+@import './variable-color.scss';
+@import './variable-typography.scss';
+
+body {
+  font-family: $font-family;
+}
+
+.loginDailog {
+  width: 380px;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}

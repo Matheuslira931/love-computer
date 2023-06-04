@@ -1,19 +1,14 @@
-<p class="title-login">Boas-vindas!</p>
-<p class="description-login">Entre com e-mail e senha para acessar a plataforma</p>
-<form [formGroup]="loginForm">
-  <mat-form-field appearance="outline" class="ui-sm-12 ui-md-12 ui-g-12">
+<form [formGroup]="signForm">
+  <mat-form-field appearance="outline">
     <mat-label>Email</mat-label>
     <input matInput type="text" formControlName="inputEmail" />
   </mat-form-field>
-  <mat-form-field appearance="outline" class="ui-sm-12 ui-md-12 ui-g-12">
+  <mat-form-field appearance="outline">
     <mat-label>Senha</mat-label>
     <input matInput formControlName="inputPassword" [type]="hide ? 'password' : 'text'">
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
-  <button class="btn-modal-auth" (click)="logar()">LOGAR</button>
 </form>
-<a class="to-login" (click)="redirect_auth()" >Ainda não tem conta? Cadastre-se</a>
-
 

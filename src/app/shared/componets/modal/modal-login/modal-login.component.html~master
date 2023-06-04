@@ -1,0 +1,33 @@
+<p class="title-login">Boas-vindas!</p>
+<p class="description-login">Entre com e-mail e senha para acessar a plataforma</p>
+<form [formGroup]="loginForm">
+<<<<<<< HEAD:src/app/features/home/modal-login/modal-login.component.html
+  <p class="title-modal">Vamos entrando!</p>
+  <p class="description-modal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit molestiae vero labore fuga maxime distinctio ex.</p>
+  <mat-form-field class="ui-g-12" appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" formControlName="inputEmail" />
+  </mat-form-field>
+  <mat-form-field class="ui-g-12" appearance="outline">
+=======
+  <mat-form-field appearance="outline" class="ui-sm-12 ui-md-12 ui-g-12">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" formControlName="inputEmail" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="ui-sm-12 ui-md-12 ui-g-12">
+>>>>>>> back-end:src/app/shared/componets/modal/modal-login/modal-login.component.html
+    <mat-label>Senha</mat-label>
+    <input matInput formControlName="inputPassword" [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+<<<<<<< HEAD:src/app/features/home/modal-login/modal-login.component.html
+  <button class="btn-default" (click)="logar()">Logar</button>
+=======
+  <button class="btn-modal-auth" (click)="logar()">LOGAR</button>
+>>>>>>> back-end:src/app/shared/componets/modal/modal-login/modal-login.component.html
+</form>
+<a class="to-login" (click)="redirect_auth()" >Ainda não tem conta? Cadastre-se</a>
+
+
