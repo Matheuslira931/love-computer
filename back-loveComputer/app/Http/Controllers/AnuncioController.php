@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Anuncio;
 use App\Models\ImagemAnuncio;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
@@ -32,6 +33,8 @@ class AnuncioController extends Controller
                 $imagem = $imagens->first();
 
                 $quantidadeImagem = count($imagens);
+
+                $anuncio->data_criacao = $this->formatarData($anuncio->data_criacao);
 
                 $saida[] = [
                     'anuncio' => $anuncio,
@@ -68,6 +71,8 @@ class AnuncioController extends Controller
 
           $quantidadeImagem = count($imagens_bd);
 
+          $anuncio->data_criacao = $this->formatarData($anuncio->data_criacao);
+
            $resposta = [
                'anuncio' => $anuncio,
                'quantidadeImagem' => $quantidadeImagem,
@@ -80,6 +85,28 @@ class AnuncioController extends Controller
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
         }
+    }
+
+    public function formatarData($dataParametro){
+
+        $dataSaida = $dataParametro;
+
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        
+        $tempoAtual = Carbon::now();
+        $dataAtual = $tempoAtual->toDateString(); 
+
+        if($dataParametro == $dataAtual){
+            $dataSaida = "Hoje";
+        }else{
+          $tempoAnuncio = Carbon::createFromDate($dataSaida);          
+          $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A, %d %B') );
+        }
+
+        return $dataSaida;
+
     }
 
     public function criarAnuncio(Request $request){
@@ -109,9 +136,6 @@ class AnuncioController extends Controller
             'forma_pagamento' => [
                 'required',
             ],
-            'data_criacao' => [
-                'required',
-            ],
             'usuario_id' => [
                 'required',
             ]
@@ -132,6 +156,9 @@ class AnuncioController extends Controller
             $envia_todo_brasil = $request->envia_todo_brasil;
         }
 
+        $tempoAtual = Carbon::now();
+        $dataCriacao = $tempoAtual->toDateString(); 
+
         $anuncio = Anuncio::Create([
             'nome' => $request->nome,
             'tipo_anuncio' => $request->tipo_anuncio,
@@ -141,7 +168,7 @@ class AnuncioController extends Controller
             'estado_componente' => $request->estado_componente,
             'preco' => $request->preco,
             'forma_pagamento' => $request->forma_pagamento,
-            'data_criacao' => $request->data_criacao,
+            'data_criacao' => $dataCriacao,
             'usuario_id' => $request->usuario_id,
             'descricao' => $request->descricao,
             'envia_todo_brasil' => $envia_todo_brasil,
@@ -194,9 +221,6 @@ class AnuncioController extends Controller
                 ],
                 'forma_pagamento' => [
                     'required',
-                ],
-                'data_criacao' => [
-                    'required',
                 ]
             ];
 
@@ -219,7 +243,6 @@ class AnuncioController extends Controller
                 'estado_componente' => $request->estado_componente,
                 'preco' => $request->preco,
                 'forma_pagamento' => $request->forma_pagamento,
-                'data_criacao' => $request->data_criacao,
                 'descricao' => $request->descricao,
                 'envia_todo_brasil' => $request->envia_todo_brasil,
                 'cidade' => $request->cidade,
@@ -342,7 +365,30 @@ class AnuncioController extends Controller
         ->get();
 
         if(count($anuncios) != 0){
-            return $anuncios;
+
+            foreach ($anuncios as $anuncio) {
+ 
+                $imagens =  DB::table('imagem_anuncios')
+                ->select('imagem')
+                ->where('anuncio_id', '=', $anuncio->id)
+                ->get();
+                
+                $imagem = $imagens->first();
+
+                $quantidadeImagem = count($imagens);
+
+                $anuncio->data_criacao = $this->formatarData($anuncio->data_criacao);
+
+                $saida[] = [
+                    'anuncio' => $anuncio,
+                    'quantidadeImagem' => $quantidadeImagem,
+                    'imagem' => $imagem
+                 ];
+
+            }
+//d
+            return $saida;
+
         }else{
             return response()->json(['errors' => 'Anúncio não encontrado'], 422);
         }

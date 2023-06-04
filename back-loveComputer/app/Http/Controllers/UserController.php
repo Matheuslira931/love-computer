@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\AnuncioController;
 
 class UserController extends Controller
 {
@@ -14,7 +16,19 @@ class UserController extends Controller
         $users = User::get();
 
         if($users){
-            return $users;
+
+            foreach ($users as $user) {
+//d
+                $user->data_nascimento = $this->formatarDataNascimento($user->data_nascimento);
+                
+                $usuarios[] = [
+                    'usuario' => $user
+                ];
+
+            }
+
+            return $usuarios;
+
         }else{
             return response()->json(['errors' => 'Não foi encontrado usuários'], 422);
         }
@@ -161,6 +175,8 @@ class UserController extends Controller
 
                     $quantidadeImagem = count($imagens);
 
+                    $anuncio->data_criacao = $this->formatarData($anuncio->data_criacao);
+
                     $anuncios[] = [
                         'anuncio' => $anuncio,
                         'quantidadeImagem' => $quantidadeImagem,
@@ -169,6 +185,8 @@ class UserController extends Controller
 
                 }
             }
+
+            $user->data_nascimento = $this->formatarDataNascimento($user->data_nascimento);
 
             $resposta = [
                 'usuario' => $user,
@@ -180,6 +198,45 @@ class UserController extends Controller
         }else{
             return response()->json(['errors' => 'Usuário não encontrado'], 422);
         }
+
+    }
+
+    public function formatarData($dataParametro){
+
+        $dataSaida = $dataParametro;
+
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        
+        $tempoAtual = Carbon::now();
+        $dataAtual = $tempoAtual->toDateString(); 
+
+        if($dataParametro == $dataAtual){
+            $dataSaida = "Hoje";
+        }else{
+          $tempoAnuncio = Carbon::createFromDate($dataSaida);          
+          $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A, %d %B') );
+        }
+
+        return $dataSaida;
+
+    }
+
+    public function formatarDataNascimento($dataParametro){
+
+        $dataSaida = $dataParametro;
+
+        date_default_timezone_set('America/Sao_Paulo');
+        setlocale(LC_ALL, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        setlocale(LC_TIME, 'pt_BR.utf-8', 'ptb', 'pt_BR', 'portuguese-brazil', 'portuguese-brazilian', 'bra', 'brazil', 'br');
+        
+        $tempoAtual = Carbon::now();
+
+        $tempoAnuncio = Carbon::createFromTimestamp($dataSaida);          
+        $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A, %d de %B de %Y') );
+
+        return $dataSaida;
 
     }
 
