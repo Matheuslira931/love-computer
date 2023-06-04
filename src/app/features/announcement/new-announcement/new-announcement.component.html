@@ -1,4 +1,21 @@
 <app-header></app-header>
 <div class="content">
-  <p class="description-content">O que você está anunciando?</p>
+  <div class="welcome">
+    <p class="description-content">O que você está anunciando?</p>
+  </div>
+  <div class="card-newAd">
+    <div class="content-newAd">
+      <form >
+        <mat-form-field appearance="outline" class="ui-g-12">
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" formControlName="inputName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ui-g-12">
+          <mat-label>sobrenome</mat-label>
+          <input matInput type="text" formControlName="inputLastName" />
+        </mat-form-field>
+        <button class="btn-modal-auth">Cadastrar</button>
+      </form>
+    </div>
+  </div>
 </div>

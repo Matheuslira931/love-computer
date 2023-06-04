@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AnnouncementComponent } from './announcement.component';
 import { MyAnnouncementComponent } from './my-announcement/my-announcement.component';
 import { NewAnnouncementComponent } from './new-announcement/new-announcement.component';
+import { ThisAnnouncementComponent } from './this-announcement/this-announcement.component';
 
 export const AnnouncementRouting: Routes = [
   {
@@ -15,6 +16,10 @@ export const AnnouncementRouting: Routes = [
   {
     path: 'novo-anuncio',
     component: NewAnnouncementComponent,
+  },
+  {
+    path: 'anuncio',
+    component: ThisAnnouncementComponent,
   }
 ];
 
