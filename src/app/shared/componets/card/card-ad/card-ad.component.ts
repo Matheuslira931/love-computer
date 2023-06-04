@@ -17,7 +17,10 @@ export class CardAdComponent {
   @Input() tagCard= '';
   @Input() iconName:any;
 <<<<<<< HEAD
+<<<<<<< HEAD
   
+=======
+>>>>>>> master
 =======
 >>>>>>> master
 }

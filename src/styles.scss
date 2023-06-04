@@ -34,13 +34,8 @@ $loveComputer-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($loveComputer-theme);
 
-<<<<<<< HEAD
 @import 'assets/styles/grid.scss';
 // @import 'assets/styles/variable-module.scss';
-=======
-@import 'assets/styles/grid.css';
-@import 'assets/styles/variable-module.scss';
->>>>>>> master
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
@@ -59,7 +54,6 @@ body a {
   text-decoration: none;
 }
 
-<<<<<<< HEAD
 .dailog-login {
   width: 370px;
 }
@@ -96,5 +90,3 @@ body a {
   box-shadow: 0 15px 20px rgba(246, 71, 64,.4);
   transform: translateY(-4px);
 }
-=======
->>>>>>> master
