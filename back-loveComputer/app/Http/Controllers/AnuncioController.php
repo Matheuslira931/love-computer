@@ -102,7 +102,7 @@ class AnuncioController extends Controller
             $dataSaida = "Hoje";
         }else{
           $tempoAnuncio = Carbon::createFromDate($dataSaida);          
-          $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A %d %B') );
+          $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A, %d %B') );
         }
 
         return $dataSaida;

@@ -216,7 +216,7 @@ class UserController extends Controller
             $dataSaida = "Hoje";
         }else{
           $tempoAnuncio = Carbon::createFromDate($dataSaida);          
-          $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A %d %B') );
+          $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A, %d %B') );
         }
 
         return $dataSaida;
@@ -234,7 +234,7 @@ class UserController extends Controller
         $tempoAtual = Carbon::now();
 
         $tempoAnuncio = Carbon::createFromTimestamp($dataSaida);          
-        $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A %d %B %Y') );
+        $dataSaida = ucwords( $tempoAnuncio->formatLocalized('%A, %d de %B de %Y') );
 
         return $dataSaida;
 
