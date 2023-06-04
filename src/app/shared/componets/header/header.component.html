@@ -1,0 +1,64 @@
+<div class="position-header">
+  <div class="left-area alination-country">
+    <a href="/" class="align-logos">
+      <img class="logo_navbar_name" src="./assets/img/loving-love.gif" alt="brand header"/>
+    </a>
+    <div class="input-container">
+      <fa-icon class="icon-search"
+        [icon]="['fas', 'magnifying-glass']">
+      </fa-icon>
+      <form [formGroup]="searchForm">
+        <input
+          class="input-search"
+          formControlName="inputSearch"
+          id="search"
+          autocomplete="off"
+          matInput
+          name="inputSearch"
+          placeholder="o que você ta procurando?"
+          type="text" />
+      </form>
+    </div>
+  </div>
+  <div  *ngIf="userLogged" class="logged alination-country">
+    <li class="nav-item">
+      <fa-icon class="icon-menu"
+        [icon]="['fas', 'money-bill']">
+      </fa-icon>
+      <a class="nav-link" [routerLink]="['/meus-anuncios']" routerLinkActive="router-link-active" >Meus anúncios</a>
+    </li>
+    <li class="nav-item">
+      <div class="nav-item" [matMenuTriggerFor]="menu">
+        <fa-icon class="icon-menu"
+          [icon]="['fas', 'user']">
+        </fa-icon>
+        <a class="nav-link" href="#">Perfil</a>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item class="dropdown-menu"><fa-icon class="icon-dropdown-menu" [icon]="['fas', 'user-pen']"></fa-icon>Editar</button>
+        <button mat-menu-item class="dropdown-menu" (click)="exit()"><fa-icon class="icon-dropdown-menu" [icon]="['fas', 'right-from-bracket']"></fa-icon>Sair</button>
+      </mat-menu>
+    </li>
+    <li class="nav-item">
+      <app-button-background
+        editStyle="btn-back"
+        content="Anunciar"
+        [routerLink]="['/novo-anuncio']">
+      </app-button-background>
+    </li>
+  </div>
+  <div  *ngIf="!userLogged" class="notLogged alination-country">
+    <app-button-background
+      editStyle="btn-back"
+      content="Logar"
+      (click)="openLogin('500ms', '500ms')">
+    </app-button-background>
+    <app-button-background
+      editStyle="backgroundFull"
+      content="Cadastrar"
+      (click)="openSign('500ms', '500ms')">
+    </app-button-background>
+  </div>
+</div>
+
+

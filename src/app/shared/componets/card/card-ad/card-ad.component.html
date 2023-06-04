@@ -1,0 +1,25 @@
+<div class="card-ad">
+  <div class="background-img">
+    <div class="organization-img">
+      <img class="img-ad" src="../../../assets/img/announcement/{{imgCard}}"/>
+    </div>
+  </div>
+  <div class="content-card">
+    <div class="up-side">
+      <p class="title-ad">{{titleCard}}</p>
+      <div class="organization-price">
+        <span class="price-ad">R$: <span>{{priceCard}}</span></span>
+        <p class="installment" *ngIf="installmentCard">12x de R$ <span class="installmentSpan">{{installmentCard | slice:0:5}}</span></p>
+      </div>
+    </div>
+    <div class="organization-side">
+      <div class="middle-side" *ngIf="tagCard">
+        <div class="tag"><fa-icon *ngIf="iconName" [icon]="['fas', iconName]"></fa-icon>{{tagCard}}</div>
+      </div>
+      <div class="down-side">
+        <p class="location-ad">{{locationCard}}, {{regionCard}}</p>
+        <p class="hora-ad">{{dateCard}}</p>
+      </div>
+    </div>
+  </div>
+</div>

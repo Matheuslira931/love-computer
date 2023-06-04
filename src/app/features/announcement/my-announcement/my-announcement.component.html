@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="content">
+  <p class="myAds">Meus anúncios</p>
+  <mat-tab-group class="tabCustom">
+    <mat-tab label="Ativos">
+      <div class="positons-ads">
+        <app-card-ad
+          imgCard="mouse-gamer.jpg"
+          titleCard="Mouse gamer"
+          priceCard="250"
+          locationCard="Ceara"
+          regionCard="Fortaleza"
+          dateCard="hoje"
+          tagCard="Entrega"
+          iconName="truck-fast"
+        ></app-card-ad>
+        <div class="positions-action">
+          <app-button-action editStyle="btn-edit" content="Editar anúncio"></app-button-action>
+          <app-button-action editStyle="btn-remove" content="Excluir"></app-button-action>
+        </div>
+      </div>
+      <div class="positons-ads">
+        <app-card-ad
+          imgCard="mouse-gamer.jpg"
+          titleCard="Mouse gamer"
+          priceCard="250"
+          locationCard="Ceara"
+          regionCard="Fortaleza"
+          dateCard="hoje"
+          tagCard="Entrega"
+          iconName="truck-fast"
+        ></app-card-ad>
+        <div class="positions-action">
+          <app-button-action editStyle="btn-edit" content="Editar anúncio"></app-button-action>
+          <app-button-action editStyle="btn-remove" content="Excluir"></app-button-action>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

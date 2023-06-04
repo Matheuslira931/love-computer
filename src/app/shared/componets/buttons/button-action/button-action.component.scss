@@ -1,0 +1,26 @@
+.btn-default {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 500;
+  width: 140px;
+  height: 44px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.btn-edit {
+  background-color: #74A4BC;
+}
+
+.btn-remove {
+  background-color: #FF3A20;
+}
