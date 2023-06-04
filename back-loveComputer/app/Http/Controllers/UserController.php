@@ -18,7 +18,7 @@ class UserController extends Controller
         if($users){
 
             foreach ($users as $user) {
-
+//d
                 $user->data_nascimento = $this->formatarDataNascimento($user->data_nascimento);
                 
                 $usuarios[] = [

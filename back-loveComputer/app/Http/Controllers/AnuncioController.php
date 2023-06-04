@@ -367,7 +367,7 @@ class AnuncioController extends Controller
         if(count($anuncios) != 0){
 
             foreach ($anuncios as $anuncio) {
-
+ 
                 $imagens =  DB::table('imagem_anuncios')
                 ->select('imagem')
                 ->where('anuncio_id', '=', $anuncio->id)
@@ -386,7 +386,7 @@ class AnuncioController extends Controller
                  ];
 
             }
-
+//d
             return $saida;
 
         }else{
