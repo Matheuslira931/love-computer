@@ -39,6 +39,13 @@
         <button mat-menu-item class="dropdown-menu" (click)="exit()"><fa-icon class="icon-dropdown-menu" [icon]="['fas', 'right-from-bracket']"></fa-icon>Sair</button>
       </mat-menu>
     </li>
+    <li class="nav-item">
+      <app-button-background
+        editStyle="btn-back"
+        content="Anunciar"
+        [routerLink]="['/novo-anuncio']">
+      </app-button-background>
+    </li>
   </div>
   <div  *ngIf="!userLogged" class="notLogged alination-country">
     <app-button-background
