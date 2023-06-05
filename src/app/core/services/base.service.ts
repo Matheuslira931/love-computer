@@ -25,10 +25,11 @@ export class BaseService {
       };
     }
 
-    this.token = localStorage.getItem("token");
+    this.token = localStorage.getItem("onlyToken");
 
     if (this.token) {
-      result.Authorization = "Bearer" + this.token;
+      const parsedValue = JSON.parse(this.token);
+      result.Authorization = "Bearer " + parsedValue;
     }
 
     for (const key in extraOptions) {
@@ -55,10 +56,10 @@ export class BaseService {
     return this.http.get(this.resourceUrl(id, position, params), this.options());
   }
 
-  createResource(data:any, params:any = {}) {
+  createResource(data:any, params:any = {}, extraOptions: any = {}) {
 
     let isFormData = false;
-
+    
     if (data instanceof FormData) {
       isFormData = true;
     }
@@ -66,7 +67,7 @@ export class BaseService {
     return this.http.post(
       this.resourceUrl(null, params),
       data,
-      this.options(isFormData)
+      this.options(isFormData, extraOptions)
     );
   }
 

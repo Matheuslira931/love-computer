@@ -11,7 +11,8 @@
         <input
           class="input-search"
           formControlName="inputSearch"
-          id="search"
+          id="search"  
+          (keyup)="search()"
           autocomplete="off"
           matInput
           name="inputSearch"

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tag-card',
@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TagCardComponent implements OnInit {
 
+  
+  @Input() tagCard= '';
+  @Input() iconName:any;
+  
   constructor() { }
 
   ngOnInit(): void {

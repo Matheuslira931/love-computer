@@ -1,0 +1,10 @@
+.content {
+  margin: 100px 120px;
+  .card-newAd {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    border: 1px solid #e5d9d9;
+    padding: 20px;
+  }
+}

@@ -5,16 +5,82 @@
   </div>
   <div class="card-newAd">
     <div class="content-newAd">
-      <form >
+      <form [formGroup]="newAdForm">
         <mat-form-field appearance="outline" class="ui-g-12">
-          <mat-label>Nome</mat-label>
-          <input matInput type="text" formControlName="inputName" />
+          <mat-label>Título</mat-label>
+          <input matInput type="text" formControlName="inputTitle" />
         </mat-form-field>
         <mat-form-field appearance="outline" class="ui-g-12">
-          <mat-label>sobrenome</mat-label>
-          <input matInput type="text" formControlName="inputLastName" />
+          <mat-label>Descrição</mat-label>
+          <textarea  matInput type="text" placeholder="é um equipamento..." rows="6" formControlName="inputDescription"></textarea>
         </mat-form-field>
-        <button class="btn-modal-auth">Cadastrar</button>
+        <mat-form-field appearance="outline" class="ui-g-12">
+          <mat-label>Preço (R$)</mat-label>
+          <input
+            matInput
+            type="text"
+            class="example-right-align"
+            
+            placeholder="0"
+            formControlName="inpuPrice"
+            mask="separator.2"
+            thousandSeparator="."
+            separatorLimit="100000"
+            [allowNegativeNumbers]="false"
+          />
+        </mat-form-field>
+        <div class="dividor-img-send">
+          <input type="file" name="images" enctype="multipart/form-data" #file multiple (change)="preview(file.files)" formControlName="inputImage">
+        </div>
+        <mat-form-field appearance="outline" class="ui-sm-12 ui-md-6 ui-g-6">
+          <mat-label>Estado do componente</mat-label>
+          <mat-select formControlName="inputCompState">
+            <mat-option *ngFor="let componentCondicional of componentCondicionals" [value]="componentCondicional.value">
+              {{componentCondicional.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ui-sm-12 ui-md-6 ui-g-6">
+          <mat-label>Tipo do componente</mat-label>
+          <mat-select formControlName="inputCompTip">
+            <mat-option *ngFor="let productTip of productTips" [value]="productTip.value">
+              {{productTip.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ui-sm-12 ui-md-6 ui-g-6">
+          <mat-label>Tipo do anuncio</mat-label>
+          <mat-select formControlName="inputOwnTip">
+            <mat-option *ngFor="let ownerTip of ownerTips" [value]="ownerTip.value">
+              {{ownerTip.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ui-sm-12 ui-md-6 ui-g-6">
+          <mat-label>Forma de pagamento</mat-label>
+          <mat-select formControlName="inputPayment">
+            <mat-option *ngFor="let payment of payments" [value]="payment.value">
+              {{payment.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ui-sm-12 ui-md-2 ui-g-2">
+          <mat-label>Faz envio?</mat-label>
+          <mat-select formControlName="inputSedex">
+            <mat-option *ngFor="let sedex of sedexs" [value]="sedex.value">
+              {{sedex.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ui-sm-12 ui-md-5 ui-g-5">
+          <mat-label>Estado</mat-label>
+          <input matInput type="text" formControlName="inputEstado" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="ui-sm-12 ui-md-5 ui-g-5">
+          <mat-label>Cidade</mat-label>
+          <input matInput type="text"  formControlName="inputCidade" />
+        </mat-form-field>
+        <button class="btn-modal-auth" (click)="newAd()">{{namaBtn}}</button>
       </form>
     </div>
   </div>

@@ -3,36 +3,19 @@
   <p class="myAds">Meus anúncios</p>
   <mat-tab-group class="tabCustom">
     <mat-tab label="Ativos">
-      <div class="positons-ads">
+      <div class="positons-ads" *ngFor="let anuncio of returnListAd">
         <app-card-ad
           imgCard="mouse-gamer.jpg"
-          titleCard="Mouse gamer"
-          priceCard="250"
-          locationCard="Ceara"
-          regionCard="Fortaleza"
-          dateCard="hoje"
-          tagCard="Entrega"
-          iconName="truck-fast"
+          titleCard="{{ anuncio.nome }}"
+          priceCard="{{ anuncio.preco }}"
+          locationCard="{{ anuncio.estado }}"
+          regionCard="{{ anuncio.cidade }}"
+          dateCard="{{ anuncio.data_criacao }}"
+          tagCard="{{ anuncio.estado_componente }}"
         ></app-card-ad>
         <div class="positions-action">
-          <app-button-action editStyle="btn-edit" content="Editar anúncio"></app-button-action>
-          <app-button-action editStyle="btn-remove" content="Excluir"></app-button-action>
-        </div>
-      </div>
-      <div class="positons-ads">
-        <app-card-ad
-          imgCard="mouse-gamer.jpg"
-          titleCard="Mouse gamer"
-          priceCard="250"
-          locationCard="Ceara"
-          regionCard="Fortaleza"
-          dateCard="hoje"
-          tagCard="Entrega"
-          iconName="truck-fast"
-        ></app-card-ad>
-        <div class="positions-action">
-          <app-button-action editStyle="btn-edit" content="Editar anúncio"></app-button-action>
-          <app-button-action editStyle="btn-remove" content="Excluir"></app-button-action>
+          <app-button-action editStyle="btn-edit" (click)="goEditAd(anuncio.id)" content="Editar anúncio"></app-button-action>
+          <app-button-action editStyle="btn-remove" (click)="deletAd(anuncio.id)" content="Excluir"></app-button-action>
         </div>
       </div>
     </mat-tab>

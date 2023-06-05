@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
 
   public searchForm! : FormGroup;
   public userLogged:any;
-
 
   constructor(public router : Router, public globalService: GlobalService, public dialog: MatDialog) { }
 
@@ -40,10 +39,11 @@ export class HeaderComponent implements OnInit {
     let request = {
       textoPesquisa: this.searchForm.get('inputSearch')?.value,
     }
+    console.log("o que tem aqui", request);
     this.globalService.entityName = 'api/pesquisar-anuncio';
-    this.globalService.createResource(request).subscribe({
+    this.globalService.getResource(request).subscribe({
       next: (response:any) => {
-        console.log("deu ruim", request)
+        console.log("deu rbom", request)
         return response
       },
       error: (response) => console.log("deu ruim", request)
@@ -69,7 +69,8 @@ export class HeaderComponent implements OnInit {
 
   exit() {
     localStorage.removeItem('tokenUser');
-    window.location.reload();
+    localStorage.removeItem('onlyToken');
+    this.router.navigate(['/auth']);
   }
 
 

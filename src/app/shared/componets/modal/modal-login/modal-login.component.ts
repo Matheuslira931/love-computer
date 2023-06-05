@@ -41,11 +41,8 @@ export class ModalLoginComponent implements OnInit{
     this.globalService.entityName = 'api/login';
     this.globalService.createResource(request).subscribe({
       next: (response:any) => {
-        let getResponse = {
-          token: response.token,
-          user: response.usuario[0].id
-        };
-        localStorage.setItem("tokenUser", JSON.stringify(getResponse));
+        localStorage.setItem("tokenUser", JSON.stringify(response));
+        localStorage.setItem("onlyToken", JSON.stringify(response.token));
         this.dialog.closeAll();
         this.router.navigateByUrl('/anuncios');
       },
