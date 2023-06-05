@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
@@ -16,10 +17,10 @@ import { IconModule } from 'src/app/shared/componets/icons/icon.module';
 import { TagsModule } from 'src/app/shared/componets/tags/tags.module';
 import { AnnouncementRouting } from './announcement-routing.module';
 import { AnnouncementComponent } from './announcement.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { MyAnnouncementComponent } from './my-announcement/my-announcement.component';
 import { NewAnnouncementComponent } from './new-announcement/new-announcement.component';
 import { ThisAnnouncementComponent } from './this-announcement/this-announcement.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 
@@ -47,6 +48,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     MatFormFieldModule,
     MatSelectModule,
     TagsModule,
+    MatIconModule,
     NgxMaskModule.forRoot()
   ]
 })

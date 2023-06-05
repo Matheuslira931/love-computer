@@ -18,6 +18,7 @@ import { HeaderComponent } from './header.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    RouterModule,
     IconModule,
     ButtonsModule,
     ModalModule,

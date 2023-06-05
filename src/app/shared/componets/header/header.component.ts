@@ -65,6 +65,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  goEditProfile() {
+    this.router.navigate(['/editar-perfil']);
+  }
+
   exit() {
     localStorage.removeItem('tokenUser');
     localStorage.removeItem('onlyToken');

@@ -1,0 +1,24 @@
+.content {
+  margin: 100px 120px;
+  .welcome {
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    .description-content {
+      font-size: 30px;
+      text-align: center;
+    }
+  }
+  .card-newAd {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    border: 1px solid #e5d9d9;
+    padding: 20px;
+    .content-newAd {
+      float: left;
+      margin-right: 2.65487%;
+      width: 48.67257%;
+    }
+  }
+}
