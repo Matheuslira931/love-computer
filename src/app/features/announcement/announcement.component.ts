@@ -24,8 +24,8 @@ export class AnnouncementComponent implements OnInit {
   allAnnouncement() {
     this.globalService.entityName = 'api/exibir-anuncios';
     this.globalService.getResources().subscribe((response:any) => {
-      this.returnListAd = response.map((anuncio: any) => anuncio.anuncio);
-      this.returnListed = response.map((anuncio: any) => anuncio.anuncio);
+      this.returnListAd = response;
+      this.returnListed = response;
       if (response.anuncio.forma_pagamento === "credito") {
         this.installment = response.anuncio.forma_pagamento/12;
       }
@@ -36,7 +36,7 @@ export class AnnouncementComponent implements OnInit {
     if (event === '') {
       this.returnListed = this.returnListAd;
     }
-    this.returnListed = event.map((anuncio: any) => anuncio.anuncio);
+    this.returnListed = event;
   }
 
   enterAd(): void {

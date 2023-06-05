@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card-ad',
   templateUrl: './card-ad.component.html',
   styleUrls: ['./card-ad.component.scss']
 })
-export class CardAdComponent {
+export class CardAdComponent implements OnInit {
 
   @Input() imgCard: any;
   @Input() titleCard = '';
@@ -16,5 +16,11 @@ export class CardAdComponent {
   @Input() dateCard = '';
   @Input() tagCard= '';
   @Input() iconName:any;
+
+  ngOnInit(): void {
+    console.log('aaaa', this.imgCard); 
+  }
+
+  
 
 }

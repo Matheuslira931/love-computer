@@ -2,14 +2,14 @@
 <div class="container">
   <div class="positons-ads" *ngFor="let anuncio of returnListed">
     <app-card-ad
-      imgCard="{{imgReturn}}"
-      titleCard="{{ anuncio.nome }}"
-      priceCard="{{ anuncio.preco }}"
-      locationCard="{{ anuncio.estado }}"
-      regionCard="{{ anuncio.cidade }}"
+      imgCard="{{ anuncio.imagem }}"
+      titleCard="{{ anuncio.anuncio.nome }}"
+      priceCard="{{ anuncio.anuncio.preco }}"
+      locationCard="{{ anuncio.anuncio.estado }}"
+      regionCard="{{ anuncio.anuncio.cidade }}"
       installmentCard="{{ installment }}"
-      dateCard="{{ anuncio.data_criacao }}"
-      tagCard="{{ anuncio.estado_componente }}"
+      dateCard="{{ anuncio.anuncio.data_criacao }}"
+      tagCard="{{ anuncio.anuncio.estado_componente }}"
       (click)="enterAd()"
     ></app-card-ad>
   </div>
