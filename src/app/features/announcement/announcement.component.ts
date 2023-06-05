@@ -12,6 +12,7 @@ export class AnnouncementComponent implements OnInit {
   public installment: any;
   public returnListAd: any[] = [];
   public imgReturn: any;
+  public returnListed: any[] = [];
 
 
   constructor(private router: Router,  public globalService: GlobalService) { }
@@ -23,13 +24,19 @@ export class AnnouncementComponent implements OnInit {
   allAnnouncement() {
     this.globalService.entityName = 'api/exibir-anuncios';
     this.globalService.getResources().subscribe((response:any) => {
-      // this.imgReturn = response.imagem.imagem;
-      // console.log("aaaaa", this.imgReturn);
       this.returnListAd = response.map((anuncio: any) => anuncio.anuncio);
+      this.returnListed = response.map((anuncio: any) => anuncio.anuncio);
       if (response.anuncio.forma_pagamento === "credito") {
         this.installment = response.anuncio.forma_pagamento/12;
       }
     });
+  }
+
+  filterAd(event: any) {
+    if (event === '') {
+      this.returnListed = this.returnListAd;
+    }
+    this.returnListed = event.map((anuncio: any) => anuncio.anuncio);
   }
 
   enterAd(): void {

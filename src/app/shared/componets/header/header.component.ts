@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   public searchForm! : FormGroup;
   public userLogged:any;
+  @Output() methodName = new EventEmitter<any>();
 
   constructor(public router : Router, public globalService: GlobalService, public dialog: MatDialog) { }
 
@@ -36,19 +37,16 @@ export class HeaderComponent implements OnInit {
   }
 
   public search() {
-    let request = {
-      textoPesquisa: this.searchForm.get('inputSearch')?.value,
+    if (this.searchForm.get('inputSearch')?.value.length > 2) {
+      this.globalService.entityName = `api/pesquisar-anuncio?textoPesquisa=${this.searchForm.get('inputSearch')?.value}`;
+      this.globalService.getResources().subscribe({
+        next: (response:any) => {
+          console.log("deu rbom")
+          this.methodName.emit(response);
+        },
+        error: (response) => console.log("deu ruim")
+      });
     }
-    console.log("o que tem aqui", request);
-    this.globalService.entityName = 'api/pesquisar-anuncio';
-    this.globalService.getResource(request).subscribe({
-      next: (response:any) => {
-        console.log("deu rbom", request)
-        return response
-      },
-      error: (response) => console.log("deu ruim", request)
-    }
-    );
   }
 
   openLogin(enterAnimationDuration: string, exitAnimationDuration: string) {
